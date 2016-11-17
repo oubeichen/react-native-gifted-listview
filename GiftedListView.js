@@ -10,6 +10,7 @@ var {
   Text,
   RefreshControl,
 } = require('react-native');
+import SGListView from 'react-native-sglistview';
 
 
 // small helper function which merged two objects into one
@@ -313,7 +314,7 @@ var GiftedListView = React.createClass({
 
   render() {
     return (
-      <ListView
+      <SGListView
         ref="listview"
         dataSource={this.state.dataSource}
         renderRow={this.props.rowView}
