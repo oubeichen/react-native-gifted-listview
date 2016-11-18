@@ -203,6 +203,7 @@ var GiftedListView = React.createClass({
   },
 
   componentDidMount() {
+    this._scrollResponder = this.refs.listview.getScrollResponder();
     this.props.onFetch(this._getPage(), this._postRefresh, {firstLoad: true});
   },
 
@@ -216,6 +217,7 @@ var GiftedListView = React.createClass({
 
   _onRefresh(options = {}) {
     if (this.isMounted()) {
+      this._scrollResponder.scrollTo({x:0, y:0, animated: true});
       this.setState({
         isRefreshing: true,
       });
@@ -253,7 +255,7 @@ var GiftedListView = React.createClass({
     if(this.props.distinctRows){
       mergedRows = this.props.distinctRows(mergedRows);
     }
-    
+
     this._updateRows(mergedRows, options);
   },
 
